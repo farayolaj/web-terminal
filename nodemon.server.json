@@ -1,0 +1,10 @@
+{
+  "exec": "ts-node --dir server src/index.ts",
+  "ext": "js, json, ts",
+  "watch": [
+    "server/**/*.js",
+    "server/**/*.json",
+    "server/**/*.ts"
+  ],
+  "verbose": false
+}

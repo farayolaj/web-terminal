@@ -1,0 +1,10 @@
+{
+  "exec": "node build.client.js",
+  "ext": "js, json, ts",
+  "watch": [
+    "client/**/*.js",
+    "client/**/*.json",
+    "client/**/*.ts"
+  ],
+  "verbose": false
+}
