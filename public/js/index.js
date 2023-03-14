@@ -9397,9 +9397,16 @@
     socket.send(buffer);
   });
   var fitAddon = new import_xterm_addon_fit.FitAddon();
+  var terminalShell = document.querySelector("#terminal");
   terminal.loadAddon(fitAddon);
-  terminal.open(document.querySelector("#terminal"));
+  terminal.open(terminalShell);
+  terminal.onResize((data) => socket.emit("resize", data));
   fitAddon.fit();
+  var timeoutId;
+  new ResizeObserver(() => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fitAddon.fit(), 500);
+  }).observe(terminalShell);
   socket.connect();
   socket.emit("setup", {cols: terminal.cols, rows: terminal.rows});
 })();
